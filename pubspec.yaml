@@ -8,7 +8,7 @@ environment:
   flutter: 3.3.8
 
 dependencies:
-  bloc: ^8.1.0
+  bloc: ^8.1.1
   blurrycontainer: ^1.0.2
   dio: ^4.0.6
   elegant_notification: ^1.6.4
