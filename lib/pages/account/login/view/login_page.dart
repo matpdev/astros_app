@@ -1,10 +1,19 @@
-// ignore_for_file: unnecessary_lambdas
+// ignore_for_file: unnecessary_lambdas, inference_failure_on_function_return_type, prefer_final_locals, omit_local_variable_types, avoid_dynamic_calls, strict_raw_type, inference_failure_on_function_invocation, use_build_context_synchronously
 
 import 'package:astros_app/consts/colors.dart';
+import 'package:astros_app/db/user_db.dart';
+import 'package:astros_app/globalController/user_controller.dart';
 import 'package:astros_app/pages/account/register/view/register_page.dart';
+import 'package:astros_app/pages/home/view/home_page.dart';
+import 'package:astros_app/repository/auth_repository.dart';
+import 'package:astros_app/utils/utils.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
+import 'package:dio/dio.dart';
+import 'package:elegant_notification/elegant_notification.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -21,6 +30,8 @@ class _LoginPageState extends State<LoginPage> {
   TextEditingController password = TextEditingController();
   String errorPassword = '';
   String errorEmail = '';
+
+  final userData = Get.put<UserController>(UserController());
 
   @override
   Widget build(BuildContext context) {
@@ -179,11 +190,44 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
                       if (!isLoading) {
                         setState(() {
                           isLoading = true;
                         });
+
+                        Response returnLogin = await UserRepo.loginUser(
+                          email.text,
+                          password.text,
+                          true,
+                        ) as Response;
+
+                        if (kDebugMode) {
+                          print(returnLogin.data);
+                        }
+
+                        if (returnLogin.data.containsKey('jwt') == true) {
+                          await DB().setUserdata(email.text, password.text);
+
+                          await saveUserToken(
+                            returnLogin.data['jwt'].toString(),
+                          );
+
+                          userData.setUserData(
+                            returnLogin.data as Map<String, dynamic>,
+                          );
+
+                          await Get.to(const HomePage());
+                          setState(() {
+                            isLoading = false;
+                          });
+                        } else {
+                          ElegantNotification.error(
+                            description: Text(
+                              returnLogin.data['Message'].toString(),
+                            ),
+                          ).show(context);
+                        }
                       }
                     },
                     child: Container(

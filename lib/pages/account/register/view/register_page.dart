@@ -2,7 +2,7 @@
 
 import 'package:astros_app/consts/colors.dart';
 import 'package:astros_app/pages/account/login/view/login_page.dart';
-import 'package:astros_app/repository/repository.dart';
+import 'package:astros_app/repository/utils_repository.dart';
 import 'package:blurrycontainer/blurrycontainer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

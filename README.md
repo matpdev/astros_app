@@ -162,3 +162,27 @@ Update the `CFBundleLocalizations` array in the `Info.plist` at `ios/Runner/Info
 [very_good_analysis_badge]: https://img.shields.io/badge/style-very_good_analysis-B22C89.svg
 [very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_cli_link]: https://github.com/VeryGoodOpenSource/very_good_cli
+
+## Afazeres
+
+<!--! Mudar dados do usuário na API, Usuário deve ter apenas alguns dados -->
+
+- [ ] - Login Page
+  - [ ] - Colocar API
+  - [ ] - Funcionar login
+- [ ] - SignIn Page
+  - [ ] - Colocar API
+  - [ ] - Funcionar Cadastro
+    - [ ] Com dados específicos
+- [ ] - Home Page
+  - [ ] - Adicionar Botão Complete seu Perfil
+  - [ ] - Colocar API e Retornar/Filtrar dados
+    - [ ] Filtar por categorias
+    - [ ] Mostar Destaques
+    - [ ] Recomendação com base em gostos
+  - [ ] - Near Artists Page
+    - [ ] - Distância mínima e máxima
+    - [ ] - Mapa
+      - [ ] Mostrar fotos dos artistas
+        - [ ] Mostrar Cards ao apertar em um artista
+      - [ ] Mostrar foto do usuário

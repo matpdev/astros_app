@@ -1,11 +1,4 @@
-import 'package:astros_app/config/ENV/DEV.dart';
 import 'package:dio/dio.dart';
-
-BaseOptions options = BaseOptions(
-  baseUrl: API,
-);
-
-Dio dio = Dio(options);
 
 Future<Map> getAddress(String cep) async {
   try {

@@ -1,7 +1,7 @@
 import 'package:astros_app/config/size_config.dart';
 // import 'package:foodhero_app/constants/colors/colors_pallete.dart';
 import 'package:astros_app/models/onboardingModels/onboarding_content.dart';
-import 'package:astros_app/pages/account/login/view/login_page.dart';
+import 'package:astros_app/pages/home/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/route_manager.dart';
@@ -127,7 +127,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                               key: 'isOnboardingRead',
                               value: 'true',
                             );
-                            await Get.to(const LoginPage());
+                            await Get.to(const HomePage());
+                            // await Get.to(const LoginPage());
                           },
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.black,
